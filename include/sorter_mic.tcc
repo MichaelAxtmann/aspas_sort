@@ -40,7 +40,7 @@ namespace internal
  *
  */
 template <typename T>
-void swap(T* a, uint32_t i, uint32_t j) 
+void swap(T* a, uint64_t i, uint64_t j) 
 {
     if(a[i] > a[j]) 
     {
@@ -61,7 +61,7 @@ void swap(T* a, uint32_t i, uint32_t j)
  *
  */
 template <typename T>
-void swap_key(T* a, int *ptr, uint32_t i, uint32_t j) 
+void swap_key(T* a, int *ptr, uint64_t i, uint64_t j) 
 {
     if(a[i] > a[j]) 
     {
@@ -76,7 +76,7 @@ void swap_key(T* a, int *ptr, uint32_t i, uint32_t j)
 }
 
 template <typename T>
-void swap_key(T* a, long *ptr, uint32_t i, uint32_t j) 
+void swap_key(T* a, long *ptr, uint64_t i, uint64_t j) 
 {
     if(a[i] > a[j]) 
     {
@@ -5300,9 +5300,9 @@ in_register_transpose(T& v0 , T& v1 , T& v2 , T& v3 , T& v4 , T& v5 , T& v6 , T&
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-sorter(T*& orig, uint32_t size)
+sorter(T*& orig, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512i vec0 ;
     __m512i vec1 ;
     __m512i vec2 ;
@@ -5474,9 +5474,9 @@ sorter(T*& orig, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-sorter_key(T*& orig, int *&ptr, uint32_t size)
+sorter_key(T*& orig, int *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512i vec0 ;
     __m512i vec1 ;
     __m512i vec2 ;
@@ -5735,9 +5735,9 @@ sorter_key(T*& orig, int *&ptr, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-sorter_key(T*& orig, long *&ptr, uint32_t size)
+sorter_key(T*& orig, long *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512i vec0 ;
     __m512i vec1 ;
     __m512i vec2 ;
@@ -6079,9 +6079,9 @@ sorter_key(T*& orig, long *&ptr, uint32_t size)
 }
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-sorter_key(T*& orig, int *&ptr, uint32_t size)
+sorter_key(T*& orig, int *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512 vec0 ;
     __m512 vec1 ;
     __m512 vec2 ;
@@ -6340,9 +6340,9 @@ sorter_key(T*& orig, int *&ptr, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-sorter_key(T*& orig, long *&ptr, uint32_t size)
+sorter_key(T*& orig, long *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512 vec0 ;
     __m512 vec1 ;
     __m512 vec2 ;
@@ -6685,9 +6685,9 @@ sorter_key(T*& orig, long *&ptr, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-sorter_key(T*& orig, int *&ptr, uint32_t size)
+sorter_key(T*& orig, int *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512d vec0 ;
     __m512d vec1 ;
     __m512d vec2 ;
@@ -6879,9 +6879,9 @@ sorter_key(T*& orig, int *&ptr, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-sorter_key(T*& orig, long *&ptr, uint32_t size)
+sorter_key(T*& orig, long *&ptr, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512d vec0;
     __m512d vec1;
     __m512d vec2;
@@ -7017,9 +7017,9 @@ sorter_key(T*& orig, long *&ptr, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-sorter(T*& orig, uint32_t size)
+sorter(T*& orig, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512 vec0 ;
     __m512 vec1 ;
     __m512 vec2 ;
@@ -7191,9 +7191,9 @@ sorter(T*& orig, uint32_t size)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-sorter(T*& orig, uint32_t size)
+sorter(T*& orig, uint64_t size)
 {
-    uint32_t i, j;
+    uint64_t i, j;
     __m512d vec0 ;
     __m512d vec1 ;
     __m512d vec2 ;
