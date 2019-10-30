@@ -39,7 +39,7 @@ namespace aspas
 
 
 /// thread_num is set to be the value of the logical cores of the current platform.
-uint64_t thread_num = sysconf(_SC_NPROCESSORS_ONLN);
+uint32_t thread_num = sysconf(_SC_NPROCESSORS_ONLN);
 
 /**
  * Represents the number of elements of various types one vector can hold
@@ -71,7 +71,7 @@ enum class simd_width : std::int8_t
  *
  */
 //! This method changes the number of the parallel threads.
-void thread_num_init(uint64_t num);
+void thread_num_init(uint32_t num);
 
 /**
  * This method sorts the given input array. Currently the input array can be of the type
@@ -84,7 +84,7 @@ void thread_num_init(uint64_t num);
  */
 //! This method sorts the given input array.
 template <class T>
-void sort(T* array, uint64_t size);
+void sort(T* array, uint32_t size);
 
 /**
  * This method sorts the given input key array with associative indices. 
@@ -98,10 +98,10 @@ void sort(T* array, uint64_t size);
  */
 //! This method sorts the given input key array.
 template <class T>
-void sort_key(T* array, int *id, uint64_t size);
+void sort_key(T* array, int *id, uint32_t size);
 
 template <class T>
-void sort_key(T* array, long *id, uint64_t size);
+void sort_key(T* array, long *id, uint32_t size);
 
 /**
  * Integer version <br>
@@ -118,7 +118,7 @@ void sort_key(T* array, long *id, uint64_t size);
 //! This method merges two sorted input arrays into one.
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output);
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output);
 
 /**
  * Float version <br>
@@ -135,7 +135,7 @@ merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output);
 //! This method merges two sorted input arrays into one.
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output);
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output);
 
 /**
  * Double version <br>
@@ -152,31 +152,31 @@ merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output);
 //! This method merges two sorted input arrays into one.
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output);
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr);
 
 
 /**
@@ -190,13 +190,13 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
  */
 //! This method sorts the input array using multiple threads.
 template <class T>
-void parallel_sort(T*& array, uint64_t size);
+void parallel_sort(T*& array, uint32_t size);
 
 template <class T>
-void parallel_sort_key(T*& array, int *id, uint64_t size);
+void parallel_sort_key(T*& array, int *id, uint32_t size);
 
 template <class T>
-void parallel_sort_key(T*& array, long *id, uint64_t size);
+void parallel_sort_key(T*& array, long *id, uint32_t size);
 
 }
 

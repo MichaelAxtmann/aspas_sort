@@ -40,7 +40,7 @@ namespace internal
  *
  */
 template <typename T>
-void merger(T*& data, uint64_t size);
+void merger(T*& data, uint32_t size);
 
 /**
  * This method merges the sorted keys in the segments.
@@ -52,10 +52,10 @@ void merger(T*& data, uint64_t size);
  *
  */
 template <typename T>
-void merger_key(T*& data, int *&ptr, uint64_t size);
+void merger_key(T*& data, int *&ptr, uint32_t size);
 
 template <typename T>
-void merger_key(T*& data, long *&ptr, uint64_t size);
+void merger_key(T*& data, long *&ptr, uint32_t size);
 
 }
 

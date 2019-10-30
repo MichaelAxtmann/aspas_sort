@@ -36,7 +36,7 @@ namespace internal
 
 /*
 template <typename T>
-void merger(T*& orig, uint64_t size)
+void merger(T*& orig, uint32_t size)
 {
     uint8_t stride;
 #ifdef __AVX__
@@ -69,7 +69,7 @@ void merger(T*& orig, uint64_t size)
 #endif
     T *buf_array = new T[size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
     for(i = stride; i < size; i = 2 * i) 
     {
@@ -101,10 +101,10 @@ void merger(T*& orig, uint64_t size)
 // */
 
 template <typename T>
-void merger(T*& orig, uint64_t size)
+void merger(T*& orig, uint32_t size)
 {
     uint8_t stride;
-    uint64_t way; 
+    uint32_t way; 
 #ifdef __AVX__
     if(std::is_same<T,int>::value)
     {
@@ -142,10 +142,10 @@ void merger(T*& orig, uint64_t size)
 
     T *buf_array = new T[size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
-    uint64_t k;
-    uint64_t block_size = stride * way;
+    uint32_t k;
+    uint32_t block_size = stride * way;
 
     // double tstart, tstop, ttime; 
     // tstart = dtime();
@@ -226,7 +226,7 @@ void merger(T*& orig, uint64_t size)
 
 /*
 template <typename T>
-void merger_key(T*& orig, int *&ptr, uint64_t size)
+void merger_key(T*& orig, int *&ptr, uint32_t size)
 {
     uint8_t stride;
 #ifdef __AVX__
@@ -260,7 +260,7 @@ void merger_key(T*& orig, int *&ptr, uint64_t size)
     T *buf_array = new T[size]; 
     int *buf_ptr = new int[size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
     for(i = stride; i < size; i = 2 * i) 
     {
@@ -298,10 +298,10 @@ void merger_key(T*& orig, int *&ptr, uint64_t size)
 
 //*
 template <typename T>
-void merger_key(T*& orig, int *&ptr, uint64_t size)
+void merger_key(T*& orig, int *&ptr, uint32_t size)
 {
     uint8_t stride;
-    uint64_t way; 
+    uint32_t way; 
 #ifdef __AVX__
     if(std::is_same<T,int>::value)
     {
@@ -339,10 +339,10 @@ void merger_key(T*& orig, int *&ptr, uint64_t size)
     T *buf_array = new T[size]; 
     int *buf_ptr = new int[size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
-    uint64_t k;
-    uint64_t block_size = stride * way;
+    uint32_t k;
+    uint32_t block_size = stride * way;
 
     for(k = 0; k < size; k += block_size)
     {
@@ -428,7 +428,7 @@ void merger_key(T*& orig, int *&ptr, uint64_t size)
 
 /*
 template <typename T>
-void merger_key(T*& orig, long *&ptr, uint64_t size)
+void merger_key(T*& orig, long *&ptr, uint32_t size)
 {
     uint8_t stride;
 #ifdef __AVX__
@@ -462,7 +462,7 @@ void merger_key(T*& orig, long *&ptr, uint64_t size)
     T *buf_array = new T[size]; 
     long *buf_ptr = new long [size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
     for(i = stride; i < size; i = 2 * i) 
     {
@@ -500,10 +500,10 @@ void merger_key(T*& orig, long *&ptr, uint64_t size)
 
 //*
 template <typename T>
-void merger_key(T*& orig, long *&ptr, uint64_t size)
+void merger_key(T*& orig, long *&ptr, uint32_t size)
 {
     uint8_t stride;
-    uint64_t way; 
+    uint32_t way; 
 #ifdef __AVX__
     if(std::is_same<T,int>::value)
     {
@@ -541,10 +541,10 @@ void merger_key(T*& orig, long *&ptr, uint64_t size)
     T *buf_array = new T[size]; 
     long *buf_ptr = new long [size]; 
     bool flip_flag = true;
-    uint64_t i, j;
+    uint32_t i, j;
 
-    uint64_t k;
-    uint64_t block_size = stride * way;
+    uint32_t k;
+    uint32_t block_size = stride * way;
 
     for(k = 0; k < size; k += block_size)
     {

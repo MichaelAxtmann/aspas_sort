@@ -35,14 +35,14 @@
 namespace aspas
 {
 
-void thread_num_init(uint64_t num)
+void thread_num_init(uint32_t num)
 {
     thread_num = num;
     return;
 }
 
 template <class T>
-void sort(T* array, uint64_t size)
+void sort(T* array, uint32_t size)
 {
     internal::sorter(array, size);
     internal::merger(array, size);
@@ -50,7 +50,7 @@ void sort(T* array, uint64_t size)
 }
 
 template <class T>
-void sort_key(T* array, int *id, uint64_t size)
+void sort_key(T* array, int *id, uint32_t size)
 {
     // std::cout << "before:" << std::endl;
     // for(int i = 0; i < size; i++)
@@ -82,7 +82,7 @@ void sort_key(T* array, int *id, uint64_t size)
 }
 
 template <class T>
-void sort_key(T* array, long *id, uint64_t size)
+void sort_key(T* array, long *id, uint32_t size)
 {
     // std::cout << "before:" << std::endl;
     // for(int i = 0; i < size; i++)
@@ -116,19 +116,19 @@ void sort_key(T* array, long *id, uint64_t size)
 template<class T>
 struct args_t
 {
-	uint64_t start;
-	uint64_t end;
+	uint32_t start;
+	uint32_t end;
     T *input;
 };
 
 template<class T>
 struct args_split
 {
-	uint64_t start;
-	uint64_t mid;
-	uint64_t end;
-    uint64_t tid;
-    uint64_t factor;
+	uint32_t start;
+	uint32_t mid;
+	uint32_t end;
+    uint32_t tid;
+    uint32_t factor;
     T *input;
     T *inputa;
     int *startA;
@@ -138,8 +138,8 @@ struct args_split
 template<class T>
 struct args_t_key
 {
-	uint64_t start;
-	uint64_t end;
+	uint32_t start;
+	uint32_t end;
     T *input;
     int *id;
 };
@@ -147,11 +147,11 @@ struct args_t_key
 template<class T>
 struct args_split_key
 {
-	uint64_t start;
-	uint64_t mid;
-	uint64_t end;
-    uint64_t tid;
-    uint64_t factor;
+	uint32_t start;
+	uint32_t mid;
+	uint32_t end;
+    uint32_t tid;
+    uint32_t factor;
     T *input;
     T *inputa;
     int *id;
@@ -163,8 +163,8 @@ struct args_split_key
 template<class T>
 struct args_t_key_l
 {
-	uint64_t start;
-	uint64_t end;
+	uint32_t start;
+	uint32_t end;
     T *input;
     long *id;
 };
@@ -172,11 +172,11 @@ struct args_t_key_l
 template<class T>
 struct args_split_key_l
 {
-	uint64_t start;
-	uint64_t mid;
-	uint64_t end;
-    uint64_t tid;
-    uint64_t factor;
+	uint32_t start;
+	uint32_t mid;
+	uint32_t end;
+    uint32_t tid;
+    uint32_t factor;
     T *input;
     T *inputa;
     long *id;
@@ -190,8 +190,8 @@ template<class T>
 void* thread_sort_kernel(void* arguments)
 {
 	args_t<T>* args = (args_t<T>*)arguments;
-    uint64_t start = args->start;
-    uint64_t end   = args->end;
+    uint32_t start = args->start;
+    uint32_t end   = args->end;
 
     sort<T>((args->input)+start, end-start);
 
@@ -202,8 +202,8 @@ template<class T>
 void* thread_sort_kernel_key(void* arguments)
 {
 	args_t_key<T>* args = (args_t_key<T>*)arguments;
-    uint64_t start = args->start;
-    uint64_t end   = args->end;
+    uint32_t start = args->start;
+    uint32_t end   = args->end;
 
     sort_key<T>((args->input)+start, (args->id)+start, end-start);
 
@@ -214,8 +214,8 @@ template<class T>
 void* thread_sort_kernel_key_l(void* arguments)
 {
 	args_t_key_l<T>* args = (args_t_key_l<T>*)arguments;
-    uint64_t start = args->start;
-    uint64_t end   = args->end;
+    uint32_t start = args->start;
+    uint32_t end   = args->end;
 
     sort_key<T>((args->input)+start, (args->id)+start, end-start);
 
@@ -226,7 +226,7 @@ template<class T>
 void* thread_merge_kernel(void* arguments)
 {
 	args_split<T>* args = (args_split<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -249,7 +249,7 @@ template<class T>
 void* thread_merge_kernel_key(void* arguments)
 {
 	args_split_key<T>* args = (args_split_key<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -272,7 +272,7 @@ template<class T>
 void* thread_merge_kernel_key_l(void* arguments)
 {
 	args_split_key_l<T>* args = (args_split_key_l<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -431,7 +431,7 @@ template<class T>
 void* thread_findkth_kernel(void* arguments)
 {
 	args_split<T>* args = (args_split<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -460,7 +460,7 @@ template<class T>
 void* thread_findkth_kernel_key(void* arguments)
 {
 	args_split_key<T>* args = (args_split_key<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -489,7 +489,7 @@ template<class T>
 void* thread_findkth_kernel_key_l(void* arguments)
 {
 	args_split_key_l<T>* args = (args_split_key_l<T>*)arguments;
-    uint64_t i, j, k;
+    uint32_t i, j, k;
     i = args->start;
     j = args->mid;
     k = args->end;
@@ -515,14 +515,14 @@ void* thread_findkth_kernel_key_l(void* arguments)
 }
 
 template <class T>
-void parallel_sort(T*& array, uint64_t size)
+void parallel_sort(T*& array, uint32_t size)
 {
 	pthread_t* threads = new pthread_t[thread_num];
 	args_t<T>* thread_args = new args_t<T>[thread_num]; 
 
-    uint64_t b = size / thread_num;
-    uint64_t m = size % thread_num;
-    for(uint64_t i = 0; i < thread_num; i++)
+    uint32_t b = size / thread_num;
+    uint32_t m = size % thread_num;
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         if(i < m)
         {
@@ -537,7 +537,7 @@ void parallel_sort(T*& array, uint64_t size)
 		pthread_create(&threads[i], NULL, thread_sort_kernel<T>, &thread_args[i]);
     }
 
-	for(uint64_t i = 0; i < thread_num; i++)
+	for(uint32_t i = 0; i < thread_num; i++)
 	{
     	pthread_join(threads[i], NULL);
 	}
@@ -546,13 +546,13 @@ void parallel_sort(T*& array, uint64_t size)
     T* inputa = new T[size]; 
     // works on inputa if true 
     bool flaga = false; 
-    uint64_t segments = thread_num;
-    uint64_t tnum;
+    uint32_t segments = thread_num;
+    uint32_t tnum;
     args_split<T>* as_old;
     args_split<T>* as_new;
 
     as_old = new args_split<T>[thread_num];
-    for(uint64_t i = 0; i < thread_num; i++)
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         as_old[i].start = thread_args[i].start;
         as_old[i].end   = thread_args[i].end;
@@ -574,7 +574,7 @@ void parallel_sort(T*& array, uint64_t size)
     while(factor <= v)
     {
         
-        for(uint64_t i = 0; i < thread_num; i++)
+        for(uint32_t i = 0; i < thread_num; i++)
         {
             as_new[i].start = as_old[(i/factor)*factor].start;
 
@@ -611,16 +611,16 @@ void parallel_sort(T*& array, uint64_t size)
             pthread_create(&threads[i], NULL, thread_findkth_kernel<T>, &as_new[i]);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_create(&threads[i], NULL, thread_merge_kernel<T>, &as_new[i]);
         }
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }
@@ -646,14 +646,14 @@ void parallel_sort(T*& array, uint64_t size)
 }
 
 template <class T>
-void parallel_sort_key(T*& array, int *id, uint64_t size)
+void parallel_sort_key(T*& array, int *id, uint32_t size)
 {
 	pthread_t* threads = new pthread_t[thread_num];
 	args_t_key<T>* thread_args = new args_t_key<T>[thread_num]; 
 
-    uint64_t b = size / thread_num;
-    uint64_t m = size % thread_num;
-    for(uint64_t i = 0; i < thread_num; i++)
+    uint32_t b = size / thread_num;
+    uint32_t m = size % thread_num;
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         if(i < m)
         {
@@ -669,7 +669,7 @@ void parallel_sort_key(T*& array, int *id, uint64_t size)
 		pthread_create(&threads[i], NULL, thread_sort_kernel_key<T>, &thread_args[i]);
     }
 
-	for(uint64_t i = 0; i < thread_num; i++)
+	for(uint32_t i = 0; i < thread_num; i++)
 	{
     	pthread_join(threads[i], NULL);
 	}
@@ -679,13 +679,13 @@ void parallel_sort_key(T*& array, int *id, uint64_t size)
     int* ida = new int[size]; 
     // works on inputa if true 
     bool flaga = false; 
-    uint64_t segments = thread_num;
-    uint64_t tnum;
+    uint32_t segments = thread_num;
+    uint32_t tnum;
     args_split_key<T>* as_old;
     args_split_key<T>* as_new;
 
     as_old = new args_split_key<T>[thread_num];
-    for(uint64_t i = 0; i < thread_num; i++)
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         as_old[i].start = thread_args[i].start;
         as_old[i].end   = thread_args[i].end;
@@ -707,7 +707,7 @@ void parallel_sort_key(T*& array, int *id, uint64_t size)
     while(factor <= v)
     {
         
-        for(uint64_t i = 0; i < thread_num; i++)
+        for(uint32_t i = 0; i < thread_num; i++)
         {
             as_new[i].start = as_old[(i/factor)*factor].start;
 
@@ -748,16 +748,16 @@ void parallel_sort_key(T*& array, int *id, uint64_t size)
             pthread_create(&threads[i], NULL, thread_findkth_kernel_key<T>, &as_new[i]);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_create(&threads[i], NULL, thread_merge_kernel_key<T>, &as_new[i]);
         }
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }
@@ -787,14 +787,14 @@ void parallel_sort_key(T*& array, int *id, uint64_t size)
 }
 
 template <class T>
-void parallel_sort_key(T*& array, long *id, uint64_t size)
+void parallel_sort_key(T*& array, long *id, uint32_t size)
 {
 	pthread_t* threads = new pthread_t[thread_num];
 	args_t_key_l<T>* thread_args = new args_t_key_l<T>[thread_num]; 
 
-    uint64_t b = size / thread_num;
-    uint64_t m = size % thread_num;
-    for(uint64_t i = 0; i < thread_num; i++)
+    uint32_t b = size / thread_num;
+    uint32_t m = size % thread_num;
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         if(i < m)
         {
@@ -810,7 +810,7 @@ void parallel_sort_key(T*& array, long *id, uint64_t size)
 		pthread_create(&threads[i], NULL, thread_sort_kernel_key_l<T>, &thread_args[i]);
     }
 
-	for(uint64_t i = 0; i < thread_num; i++)
+	for(uint32_t i = 0; i < thread_num; i++)
 	{
     	pthread_join(threads[i], NULL);
 	}
@@ -820,13 +820,13 @@ void parallel_sort_key(T*& array, long *id, uint64_t size)
     long* ida = new long[size]; 
     // works on inputa if true 
     bool flaga = false; 
-    uint64_t segments = thread_num;
-    uint64_t tnum;
+    uint32_t segments = thread_num;
+    uint32_t tnum;
     args_split_key_l<T>* as_old;
     args_split_key_l<T>* as_new;
 
     as_old = new args_split_key_l<T>[thread_num];
-    for(uint64_t i = 0; i < thread_num; i++)
+    for(uint32_t i = 0; i < thread_num; i++)
     {
         as_old[i].start = thread_args[i].start;
         as_old[i].end   = thread_args[i].end;
@@ -848,7 +848,7 @@ void parallel_sort_key(T*& array, long *id, uint64_t size)
     while(factor <= v)
     {
         
-        for(uint64_t i = 0; i < thread_num; i++)
+        for(uint32_t i = 0; i < thread_num; i++)
         {
             as_new[i].start = as_old[(i/factor)*factor].start;
 
@@ -889,16 +889,16 @@ void parallel_sort_key(T*& array, long *id, uint64_t size)
             pthread_create(&threads[i], NULL, thread_findkth_kernel_key_l<T>, &as_new[i]);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }
 
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_create(&threads[i], NULL, thread_merge_kernel_key_l<T>, &as_new[i]);
         }
-        for (uint64_t i = 0; i < thread_num; ++i)
+        for (uint32_t i = 0; i < thread_num; ++i)
         {
             pthread_join(threads[i], NULL);
         }

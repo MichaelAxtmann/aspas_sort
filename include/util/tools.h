@@ -44,9 +44,9 @@ namespace util
  *
  */
 template <typename T>
-bool check_sorted(T* test_array, uint64_t size) 
+bool check_sorted(T* test_array, uint32_t size) 
 {
-    uint64_t i;
+    uint32_t i;
     for(i = 1; i < size; i++) 
     {
         if ( test_array[i] < test_array[i-1] ) 
@@ -62,7 +62,7 @@ bool check_sorted(T* test_array, uint64_t size)
 }
 
 template <typename T>
-bool check_sorted_key(T* test_array, int *id, uint64_t size) 
+bool check_sorted_key(T* test_array, int *id, uint32_t size) 
 {
     T *sorted = new T[size];
 
@@ -78,7 +78,7 @@ bool check_sorted_key(T* test_array, int *id, uint64_t size)
 }
 
 template <typename T>
-bool check_sorted_key(T* test_array, long *id, uint64_t size) 
+bool check_sorted_key(T* test_array, long *id, uint32_t size) 
 {
     T *sorted = new T[size];
 
@@ -105,7 +105,7 @@ bool check_sorted_key(T* test_array, long *id, uint64_t size)
  *
  */
 template <typename T>
-bool check_partially_sorted(T* test_array, uint64_t size) 
+bool check_partially_sorted(T* test_array, uint32_t size) 
 {
 
     uint8_t stride;
@@ -138,7 +138,7 @@ bool check_partially_sorted(T* test_array, uint64_t size)
     }
 #endif
  
-    uint64_t i, j;
+    uint32_t i, j;
     for(i = 0; i + stride - 1 < size; i += stride) 
     {
         for(j = i; j - stride + 1 < i; j++)
@@ -169,11 +169,11 @@ bool check_partially_sorted(T* test_array, uint64_t size)
  *
  */
 template <typename T>
-void list_array(T*& arr, uint64_t size, char* prompt) 
+void list_array(T*& arr, uint32_t size, char* prompt) 
 {
     if(prompt != NULL)
         std::cerr << prompt << std::endl;
-    uint64_t i;
+    uint32_t i;
     int LINE_SIZE;
 #ifdef __AVX__
     if(std::is_same<T, int>::value)
@@ -211,9 +211,9 @@ void list_array(T*& arr, uint64_t size, char* prompt)
  *
  */
 template <typename T>
-void copy_array(T* a, uint64_t n_a, T* b, uint64_t n_b) 
+void copy_array(T* a, uint32_t n_a, T* b, uint32_t n_b) 
 {
-    uint64_t i; 
+    uint32_t i; 
     if(n_a!=n_b)
     {
         std::cerr << "error: copy size different" << std::endl;

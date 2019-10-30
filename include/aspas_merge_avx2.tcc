@@ -759,17 +759,17 @@ in_register_merge_key(T& v0, T& v1, __m256i &pv0, __m256i &pv1)
 
 template <typename T>
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output)
 {
     __m256i vec0;
     __m256i vec1;
     
     uint8_t stride = (uint8_t)simd_width::AVX_INT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     int buffer[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -938,7 +938,7 @@ merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
 
 template <typename T> // int key int index
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
 {
     __m256i vec0;
     __m256i vec1;
@@ -946,12 +946,12 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
     __m256i p0;
     __m256i p1;
     uint8_t stride = (uint8_t)simd_width::AVX_INT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     int buffer[stride];
     int buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -1148,7 +1148,7 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
 
 template <typename T> // int key long index
 typename std::enable_if<std::is_same<T, int>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
 {
     __m256i vec0;
     __m256i vec1;
@@ -1158,12 +1158,12 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
     __m256i pl1;
     __m256i ph1;
     uint8_t stride = (uint8_t)simd_width::AVX_INT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     int buffer[stride];
     long buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -1371,17 +1371,17 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
 
 template <typename T>
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output)
 {
     __m256 vec0;
     __m256 vec1;
     
     uint8_t stride = (uint8_t)simd_width::AVX_FLOAT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     float buffer[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -1550,7 +1550,7 @@ merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
 
 template <typename T> // float key int index
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
 {
     __m256 vec0;
     __m256 vec1;
@@ -1558,12 +1558,12 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
     __m256i p0;
     __m256i p1;
     uint8_t stride = (uint8_t)simd_width::AVX_FLOAT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     float buffer[stride];
     int buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -1760,7 +1760,7 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
 
 template <typename T> // float key long index
 typename std::enable_if<std::is_same<T, float>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
 {
     __m256 vec0;
     __m256 vec1;
@@ -1772,13 +1772,13 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
     __m256i pl1;
     __m256i ph1;
     uint8_t stride = (uint8_t)simd_width::AVX_FLOAT;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     float buffer[stride];
     // int buffer_ptr[stride];
     long buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -2001,17 +2001,17 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
 
 template <typename T>
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
+merge(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output)
 {
     __m256d vec0;
     __m256d vec1;
     
     uint8_t stride = (uint8_t)simd_width::AVX_DOUBLE;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     double buffer[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -2180,7 +2180,7 @@ merge(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output)
 
 template <typename T> // double key int index
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, int *ptrA, int *ptrB, int *output_ptr)
 {
     __m256d vec0;
     __m256d vec1;
@@ -2188,12 +2188,12 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
     __m128i p0;
     __m128i p1;
     uint8_t stride = (uint8_t)simd_width::AVX_DOUBLE;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     double buffer[stride];
     int buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
@@ -2398,7 +2398,7 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, int *
 }
 template <typename T> // double key long index
 typename std::enable_if<std::is_same<T, double>::value>::type
-merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
+merge_key(T* inputA, uint32_t sizeA, T* inputB, uint32_t sizeB, T* output, long *ptrA, long *ptrB, long *output_ptr)
 {
     __m256d vec0;
     __m256d vec1;
@@ -2406,12 +2406,12 @@ merge_key(T* inputA, uint64_t sizeA, T* inputB, uint64_t sizeB, T* output, long 
     __m256i p0;
     __m256i p1;
     uint8_t stride = (uint8_t)simd_width::AVX_DOUBLE;
-    uint64_t i0=0;
-    uint64_t i1=0;
-    uint64_t iout=0;
+    uint32_t i0=0;
+    uint32_t i1=0;
+    uint32_t iout=0;
     double buffer[stride];
     long buffer_ptr[stride];
-    uint64_t i3=0;
+    uint32_t i3=0;
 
     if(sizeA >= stride && sizeB >= stride)
     {
