@@ -1,6 +1,6 @@
 /*
 * (c) 2015 Virginia Polytechnic Institute & State University (Virginia Tech)   
-* (c) 2019 Michael Axtmann <michael.axtmann@kit.edu>
+* (c) 2019 Michael Axtmann <michael.axtmann@gmail.com>
 *                                                                              
 *   This program is free software: you can redistribute it and/or modify       
 *   it under the terms of the GNU General Public License as published by       
